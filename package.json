@@ -1,0 +1,23 @@
+{
+  "name": "adonis-rest",
+  "version": "1.0.0",
+  "description": "Restful api for AdonisJs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wxs77577/adonis-rest.git"
+  },
+  "dependencies": {
+    "i": "^0.3.5"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/wxs77577/adonis-rest/issues"
+  },
+  "homepage": "https://github.com/wxs77577/adonis-rest#readme"
+}
