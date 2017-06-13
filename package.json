@@ -1,7 +1,7 @@
 {
   "name": "adonis-rest",
   "version": "1.0.0",
-  "description": "Restful api for AdonisJs",
+  "description": "Restful api for AdonisJs with validation",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -11,7 +11,8 @@
     "url": "git+https://github.com/wxs77577/adonis-rest.git"
   },
   "dependencies": {
-    "i": "^0.3.5"
+    "i": "^0.3.5",
+    "adonis-validation-provider": "^3.0.5"
   },
   "keywords": [],
   "author": "",
