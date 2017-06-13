@@ -35,7 +35,7 @@ module.exports = RestController
 > Base uri: `http://localhost:3333/api`
 
 | 请求方法 | URL | 描述 |
-| -- | -- | -- | -- |
+| --- | --- | --- |
 | GET | /news | 获取新闻列表 |
 | POST | /news | 获取一条新闻 |
 | PUT/PATCH | /news/:id | 修改一条新闻 |
@@ -47,7 +47,7 @@ module.exports = RestController
 #### URL查询参数
 
 | 参数名 | 示例值 | 描述 |
-| -- | -- | -- | -- |
+| --- | --- | --- |
 | pagination | 1 | 获取包含分页信息的数据，否则获取扁平数组，不过你仍然可以通过`headers`来获取分页信息 |
 | query | {"user_id": 1} | 查询条件，也可以用 `filter` 或 `where` |
 | page | 1 |当前页 |
