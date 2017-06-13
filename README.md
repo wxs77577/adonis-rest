@@ -34,14 +34,17 @@ module.exports = RestController
 That's all. Now you get all apis of your models.
 
 ## Documentations
+
 > Base uri: `http://localhost:3333/api`
 
+
 | METHOD | URL | DESCRIPTION |
-| -- | -- | -- | -- |
+| --- | --- | --- |
 | GET | /news | Get all news |
 | POST | /news | Create a news |
 | PUT/PATCH | /news/:id | Update a news |
 | DELETE | /news/:id | Delete a news |
+
 
 ### GET `/news`
 Get all news
@@ -51,7 +54,7 @@ Get all news
 page query filter per_page perPage limit offset skip where expand fields groupBy orderBy pagination
 
 | NAME | SAMPLE VALUE | DESCRIPTION |
-| -- | -- | -- | -- |
+| --- | --- | --- |
 | pagination | 1 | Return data with pagination info if set any value, otherwise return the flat array. But you can retrive pagination info from reponse `headers` |
 | query | {"user_id": 1} | Also you can use `filter` or `where` |
 | page | 1 | Current Page |

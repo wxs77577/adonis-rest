@@ -1,0 +1,111 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/usr/local/Cellar/node/7.2.0/bin/node',
+1 verbose cli   '/usr/local/bin/npm',
+1 verbose cli   'publish',
+1 verbose cli   '.' ]
+2 info using npm@3.10.9
+3 info using node@v7.2.0
+4 verbose publish [ '.' ]
+5 silly cache add args [ '.', null ]
+6 verbose cache add spec .
+7 silly cache add parsed spec Result {
+7 silly cache add   raw: '.',
+7 silly cache add   scope: null,
+7 silly cache add   escapedName: null,
+7 silly cache add   name: null,
+7 silly cache add   rawSpec: '.',
+7 silly cache add   spec: '/Users/xuesong/git/wxs77577/adonis-rest',
+7 silly cache add   type: 'directory' }
+8 verbose addLocalDirectory /Users/xuesong/.npm/adonis-rest/1.0.0/package.tgz not in flight; packing
+9 verbose correctMkdir /Users/xuesong/.npm correctMkdir not in flight; initializing
+10 info lifecycle adonis-rest@1.0.0~prepublish: adonis-rest@1.0.0
+11 silly lifecycle adonis-rest@1.0.0~prepublish: no script for prepublish, continuing
+12 verbose tar pack [ '/Users/xuesong/.npm/adonis-rest/1.0.0/package.tgz',
+12 verbose tar pack   '/Users/xuesong/git/wxs77577/adonis-rest' ]
+13 verbose tarball /Users/xuesong/.npm/adonis-rest/1.0.0/package.tgz
+14 verbose folder /Users/xuesong/git/wxs77577/adonis-rest
+15 verbose addLocalTarball adding from inside cache /Users/xuesong/.npm/adonis-rest/1.0.0/package.tgz
+16 verbose correctMkdir /Users/xuesong/.npm correctMkdir not in flight; initializing
+17 silly cache afterAdd adonis-rest@1.0.0
+18 verbose afterAdd /Users/xuesong/.npm/adonis-rest/1.0.0/package/package.json not in flight; writing
+19 verbose correctMkdir /Users/xuesong/.npm correctMkdir not in flight; initializing
+20 verbose afterAdd /Users/xuesong/.npm/adonis-rest/1.0.0/package/package.json written
+21 silly publish { name: 'adonis-rest',
+21 silly publish   version: '1.0.0',
+21 silly publish   description: 'Restful api for AdonisJs with validation',
+21 silly publish   main: 'index.js',
+21 silly publish   scripts: { test: 'echo "Error: no test specified" && exit 1' },
+21 silly publish   repository:
+21 silly publish    { type: 'git',
+21 silly publish      url: 'git+https://github.com/wxs77577/adonis-rest.git' },
+21 silly publish   dependencies: { i: '^0.3.5', 'adonis-validation-provider': '^3.0.5' },
+21 silly publish   keywords: [],
+21 silly publish   author: { name: 'wxs77577' },
+21 silly publish   license: 'ISC',
+21 silly publish   bugs: { url: 'https://github.com/wxs77577/adonis-rest/issues' },
+21 silly publish   homepage: 'https://github.com/wxs77577/adonis-rest#readme',
+21 silly publish   readme: '# adonis-rest\nRestful api for AdonisJs， Welcome to [https://adonis-china.org](https://adonis-china.org)\n\n## [中文文档](README_CN.md)\n\n## Install\n\n1. `npm install --save adonis-rest`\n\n\n## Prepare\nTips: Please be sure that you have some models in `/app/Model/`.  Use `./ace make:model News` to create a News model if not.\n\n> /app/Http/routes.js\n``` javascript\nRoute.put(\'/api/:resource\', \'RestController.update\') //optional\nRoute.resource(\'/api/:resource\', \'RestController\')\n```\n\n> Create `/app/Http/Controllers/RestController.js`\n\n``` javascript\n\'use strict\'\n\nconst BaseRestController = require(\'adonis-rest\')\n\nclass RestController  extends BaseRestController{\n\n}\n\nmodule.exports = RestController\n```\n\nThat\'s all. Now you get all apis of your models.\n\n## Documentations\n> Base uri: `http://localhost:3333/api`\n\n| METHOD | URL | DESCRIPTION |\n| -- | -- | -- | -- |\n| GET | /news | Get all news |\n| POST | /news | Create a news |\n| PUT/PATCH | /news/:id | Update a news |\n| DELETE | /news/:id | Delete a news |\n\n### GET `/news`\nGet all news\n\n#### Url Query String\n\npage query filter per_page perPage limit offset skip where expand fields groupBy orderBy pagination\n\n| NAME | SAMPLE VALUE | DESCRIPTION |\n| -- | -- | -- | -- |\n| pagination | 1 | Return data with pagination info if set any value, otherwise return the flat array. But you can retrive pagination info from reponse `headers` |\n| query | {"user_id": 1} | Also you can use `filter` or `where` |\n| page | 1 | Current Page |\n| perPage | 10 | Also you can use `limit` |\n| offset | 10 | Also you can use `skip` |\n| fields | id,title,created_at | Fields for `select` |\n| orderBy | id | Use `-id` for `desc` |\n\n### Pagination info in headers\n- `X-Pagination-Total-Count`\n- `X-Pagination-Page-Count`\n- `X-Pagination-Current-Page`\n- `X-Pagination-Per-Page`\n\n### Formats of `query`\n- `query={"created_at": "2017-07-07"}`\n- `query={"created_at": [">", "2017-07-07"]}` or `<`,`<>` etc\n- `query={"created_at": ["between", ["2017-07-01", "2017-07-31"]]}` or `notBetween`\n- `query={"user_id": ["in", [1,2,3] ]}` or `notIn`\n- `query={"user_id": ["raw", \'user_id IS NULL\' ]}`\n\n\n## Any Problem?\nJust tell me in `Issues`\n',
+21 silly publish   readmeFilename: 'README.md',
+21 silly publish   gitHead: 'd388c3646ef5b7219afd6fe6e0e5d6f95b1cadbf',
+21 silly publish   _id: 'adonis-rest@1.0.0',
+21 silly publish   _shasum: '5a7c3d0d6d340ad43d212c6962adf056c8150415',
+21 silly publish   _from: '.' }
+22 verbose getPublishConfig undefined
+23 silly mapToRegistry name adonis-rest
+24 silly mapToRegistry using default registry
+25 silly mapToRegistry registry http://registry.npmjs.org/
+26 silly mapToRegistry data Result {
+26 silly mapToRegistry   raw: 'adonis-rest',
+26 silly mapToRegistry   scope: null,
+26 silly mapToRegistry   escapedName: 'adonis-rest',
+26 silly mapToRegistry   name: 'adonis-rest',
+26 silly mapToRegistry   rawSpec: '',
+26 silly mapToRegistry   spec: 'latest',
+26 silly mapToRegistry   type: 'tag' }
+27 silly mapToRegistry uri http://registry.npmjs.org/adonis-rest
+28 verbose publish registryBase http://registry.npmjs.org/
+29 silly publish uploading /Users/xuesong/.npm/adonis-rest/1.0.0/package.tgz
+30 verbose request uri http://registry.npmjs.org/adonis-rest
+31 verbose request sending authorization for write operation
+32 info attempt registry request try #1 at 9:53:05 PM
+33 verbose request using bearer token for auth
+34 verbose request id ffb5a7876d993483
+35 http request PUT http://registry.npmjs.org/adonis-rest
+36 http 403 http://registry.npmjs.org/adonis-rest
+37 verbose headers { 'content-type': 'application/json',
+37 verbose headers   'cache-control': 'max-age=300',
+37 verbose headers   'content-length': '95',
+37 verbose headers   'accept-ranges': 'bytes',
+37 verbose headers   date: 'Tue, 13 Jun 2017 13:53:07 GMT',
+37 verbose headers   via: '1.1 varnish',
+37 verbose headers   connection: 'keep-alive',
+37 verbose headers   'x-served-by': 'cache-hkg6822-HKG',
+37 verbose headers   'x-cache': 'MISS',
+37 verbose headers   'x-cache-hits': '0',
+37 verbose headers   'x-timer': 'S1497361986.422600,VS0,VE800',
+37 verbose headers   vary: 'Accept-Encoding' }
+38 verbose request invalidating /Users/xuesong/.npm/registry.npmjs.org/adonis-rest on PUT
+39 error publish Failed PUT 403
+40 verbose stack Error: "You cannot publish over the previously published version 1.0.0." : adonis-rest
+40 verbose stack     at makeError (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:302:12)
+40 verbose stack     at CachingRegistryClient.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:290:14)
+40 verbose stack     at Request._callback (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:210:14)
+40 verbose stack     at Request.self.callback (/usr/local/lib/node_modules/npm/node_modules/request/request.js:187:22)
+40 verbose stack     at emitTwo (events.js:106:13)
+40 verbose stack     at Request.emit (events.js:191:7)
+40 verbose stack     at Request.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/request/request.js:1048:10)
+40 verbose stack     at emitOne (events.js:96:13)
+40 verbose stack     at Request.emit (events.js:188:7)
+40 verbose stack     at IncomingMessage.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/request/request.js:969:12)
+41 verbose statusCode 403
+42 verbose pkgid adonis-rest
+43 verbose cwd /Users/xuesong/git/wxs77577/adonis-rest
+44 error Darwin 16.7.0
+45 error argv "/usr/local/Cellar/node/7.2.0/bin/node" "/usr/local/bin/npm" "publish" "."
+46 error node v7.2.0
+47 error npm  v3.10.9
+48 error code E403
+49 error "You cannot publish over the previously published version 1.0.0." : adonis-rest
+50 error If you need help, you may report this error at:
+50 error     <https://github.com/npm/npm/issues>
+51 verbose exit [ 1, true ]
