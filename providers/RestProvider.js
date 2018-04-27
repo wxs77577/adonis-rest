@@ -7,6 +7,10 @@ class RestProvider extends ServiceProvider {
       const ResourceController = require('../src/controllers/ResourceController')
       return ResourceController
     })
+    this.app.bind('Rest/Controllers/ResourceControllerInstance', app => {
+      const ResourceController = require('../src/controllers/ResourceController')
+      return new ResourceController
+    })
 
     this._registerMiddleware()
     this._registerModels()
@@ -48,7 +52,7 @@ class RestProvider extends ServiceProvider {
     const Route = this.app.use('Route')
     Route.rest = (prefix, configKey) => {
       const config = this.app.use('Config').get(`rest.${configKey}`)
-      const controller = '@provider:Rest/Controllers/ResourceController'
+      const controller = '@provider:Rest/Controllers/ResourceControllerInstance'
       Route.group(() => {
         Route.get(':resource/grid', `${controller}.grid`)
         Route.get(':resource/form', `${controller}.form`)
