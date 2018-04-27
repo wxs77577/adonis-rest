@@ -1,0 +1,30 @@
+module.exports = {
+  api: {
+    auth: 'jwt',
+    resources: {
+      /*
+      products: {
+        auth: true,
+        query: {
+          index: {
+            append: ['is_buy'],
+            with: ['buyable'],
+            query: {
+              perPage: 20
+            }
+          },
+          show: {
+            
+          }
+        }
+      },
+      */
+    }
+  },
+  admin: {
+    auth: 'jwt', //maybe adminJwt
+    resources: {
+
+    }
+  }
+}
