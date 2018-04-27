@@ -1,7 +1,7 @@
 {
   "name": "adonis-rest",
-  "version": "0.0.1",
-  "description": "An Restful api addon for AdonisJs + MongoDB",
+  "version": "2.0.2",
+  "description": "An Restful api addon for AdonisJs 4 + MongoDB",
   "main": "index.js",
   "scripts": {
     "lint": "standard",
@@ -9,9 +9,11 @@
     "pretest": "npm run lint",
     "test": "japa"
   },
-  "private": true,
   "keywords": [
     "adonisjs",
+    "restful",
+    "adonis-rest",
+    "rest-admin",
     "adonis-framework"
   ],
   "author": "",

@@ -5,7 +5,7 @@ class RestProvider extends ServiceProvider {
     // register bindings
     this.app.bind('Rest/Controllers/ResourceController', app => {
       const ResourceController = require('../src/controllers/ResourceController')
-      return new ResourceController()
+      return ResourceController
     })
 
     this._registerMiddleware()
