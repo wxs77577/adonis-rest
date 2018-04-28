@@ -4,11 +4,11 @@ class RestProvider extends ServiceProvider {
   register () {
     // register bindings
     this.app.bind('Rest/Controllers/ResourceController', app => {
-      const ResourceController = require('../src/controllers/ResourceController')
+      const ResourceController = require('../src/Controllers/ResourceController')
       return ResourceController
     })
     this.app.bind('Rest/Controllers/ResourceControllerInstance', app => {
-      const ResourceController = require('../src/controllers/ResourceController')
+      const ResourceController = require('../src/Controllers/ResourceController')
       return new ResourceController
     })
 
