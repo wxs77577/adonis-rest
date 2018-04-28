@@ -52,20 +52,37 @@ class RestProvider extends ServiceProvider {
     const Route = this.app.use('Route')
     Route.rest = (prefix, configKey) => {
       const config = this.app.use('Config').get(`rest.${configKey}`)
-      const controller = '@provider:Rest/Controllers/ResourceControllerInstance'
+      const controller = config.controller || '@provider:Rest/Controllers/ResourceControllerInstance'
       Route.group(() => {
-        Route.get(':resource/grid', `${controller}.grid`)
-        Route.get(':resource/form', `${controller}.form`)
-        Route.get(':resource/view', `${controller}.view`)
-        Route.get(':resource/stat', `${controller}.stat`)
-        Route.get(':resource/export', `${controller}.export`)
-        Route.delete(':resource', `${controller}.destroyAll`)
-        Route.resource('/:resource', controller)
+        
+        if (config.isAdmin) {
+          for (let path of ['grid', 'form', 'view', 'stat', 'export', 'options', 'stat']) {
+            Route.get(`:resource/${path}`, `${controller}.${path}`).as(`${configKey}.resource.${path}`)
+          }
+          
+          
+          Route.post(':resource', `${controller}.store`).as(`${configKey}.resource.store`)
+          Route.route(':resource/:id', `${controller}.update`, ['POST', 'PUT', 'PATCH']).as(`${configKey}.resource.update`)
+          Route.delete(':resource', `${controller}.destroy`).as(`${configKey}.resource.destroy`)
+        }
+        
+        if (config.allowDestroyAll) {
+          Route.delete(':resource', `${controller}.destroyAll`).as(`${configKey}.resource.destroyAll`)
+        }
+
+        Route.get(':resource', `${controller}.index`).as(`${configKey}.resource.index`)
+        Route.get(':resource/:id', `${controller}.show`).as(`${configKey}.resource.show`)
+
       }).prefix(prefix).middleware([
         `rest-auth:${config.auth || 'jwt'}`,
         `rest-query:${configKey}`,
         `rest-resource`
       ])
+
+      Route.get(':resource/options', `${controller}.options`).middleware([
+        `rest-auth:${config.auth || 'jwt'}`,
+        'rest-resource:,allowAll'
+      ]).as(`${configKey}.resource.options`)
     }
   }
 }
