@@ -105,3 +105,15 @@ Now, You can check the followed links: (if your port of server is `3333`)
 - http://localhost:3333/rest/admin/products
 
 
+### Base Model
+There is a more powerful base model `Rest/Models/Model`
+
+You can define a `Product` model like this:
+
+```js
+const Model = use('Rest/Models/Model')
+
+module.exports = class Product extends Model {
+
+}
+```
