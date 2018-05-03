@@ -16,18 +16,18 @@
     "rest-admin",
     "adonis-framework"
   ],
-  "author": "",
-  "license": "",
+  "author": "JohnnyWu <wu-xuesong@qq.com>",
+  "license": "MIT",
   "devDependencies": {
     "@adonisjs/sink": "^1.0.13",
     "japa": "^1.0.5",
     "japa-cli": "^1.0.1",
     "standard": "^10.0.3"
   },
-  "peerDependencies": {
-    "lucid-mongo": "^3.0.5"
-  },
   "dependencies": {
+    "lucid-mongo": "^3.0.5",
+    "@adonisjs/antl": "^2.0.5",
+    "@adonisjs/validator": "^5.0.3",
     "@adonisjs/generic-exceptions": "^2.0.0",
     "array-to-tree": "^2.2.1",
     "inflection": "^1.12.0",
@@ -39,5 +39,9 @@
       "use",
       "make"
     ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/wxs77577/adonis-rest.git"
   }
 }

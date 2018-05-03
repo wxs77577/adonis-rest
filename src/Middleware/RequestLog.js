@@ -2,7 +2,6 @@
 
 module.exports = class Global {
   constructor () {
-    console.log('global')
   }
   async handle ({ request, auth }, next) {
     // call next to advance the request
