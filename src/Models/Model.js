@@ -11,9 +11,30 @@ const arrayToTree = require('array-to-tree')
 const { HttpException } = require('@adonisjs/generic-exceptions')
 
 module.exports = class Model extends BaseModel {
-  // static castDates (key, value) {
-  //   return value.format()
-  // }
+
+  static get collection() {
+    if (this._collection) {
+      return this._collection
+    }
+    return super.collection
+  }
+
+  static get name() {
+    return this._name ? this._name : this.name
+  }
+  static set name(name) {
+    this._name = name
+    return this
+  }
+  static setName(name) {
+    this.name = name
+    return this
+  }
+
+  static setCollection(name) {
+    this._collection = name
+    return this
+  }
 
   static get fillable () {
     return _.reject(_.keys(this.fields), v => {

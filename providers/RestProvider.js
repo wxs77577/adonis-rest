@@ -1,4 +1,4 @@
-const { ServiceProvider } = require('@adonisjs/fold')
+const { ServiceProvider } = require.main.require('@adonisjs/fold')
 
 class RestProvider extends ServiceProvider {
   register () {

@@ -5,25 +5,36 @@
   Also check [REST-ADMIN](https://github.com/wxs77577/rest-admin) - An awesome admin dashboard based on vue 2 and bootstrap v4
 
 ## Setup
-> Install [lucid-mongo](https://github.com/duyluonglc/lucid-mongo) first.
+> also you can use `npm` by ommit `--yarn`
 
-1.  ```bash
-    # install adonis-rest, also you can add `--yarn`
-    adonis install adonis-rest
+1. Install required packages
+    ```bash
+    adonis install @adonisjs/validator --yarn
+    adonis install @adonisjs/antl --yarn
+    adonis install @adonisjs/drive --yarn
+    adonis install lucid-mongo --yarn
+
+    # install adonis-rest
+    adonis install adonis-rest --yarn
     ```
-1. `/start/app.js`
+1. Edit `/start/app.js`
+    
     ```js
     const providers = [
-      /* import Rest Provider */
+      '@adonisjs/validator/providers/ValidatorProvider',
+      '@adonisjs/antl/providers/AntlProvider',
+      '@adonisjs/drive/providers/DriveProvider',
+      'lucid-mongo/providers/LucidMongoProvider',
+
       'adonis-rest/providers/RestProvider',
     ]
     ```
 
-1. `/start/routes.js`
+1. Edit `/start/routes.js`
     ```js
     `Route.rest('/rest/api', 'api')`
     ```
-1. Request `http://localhost:3333/rest/api/users` (or another port) should return paginated user list.
+1. Open `http://localhost:3333/rest/api/users` (or another port) should return paginated user list.
 
 ## Documentation 
 

@@ -6,7 +6,7 @@ const Config = use('Config')
 const toNumber = (val, defaultValue = 0) => Number(val) || defaultValue
 
 class Query {
-  async handle (ctx, next, param) {
+  async handle(ctx, next, param) {
     const [configKey = 'api'] = param
 
     const { request, params, auth } = ctx
@@ -21,23 +21,14 @@ class Query {
       query.where = {}
     }
 
-    let page = toNumber(request.input('page', 1))
-    if (!query.page) {
-      query.page = page
-    }
 
-    if (query.where && query.where.perPage) {
-      query.perPage = toNumber(query.where.perPage) || 10
-    }
-    delete query.where.perPage
 
     // if (_.isString(query.perPage)) {
     //   const pagesize = await Option.get('pagesize', 'name', 'value')
     //   query.perPage = parseInt(pagesize[query.perPage]) || 10
     // }
 
-    query.page = Math.max(toNumber(query.page, 1), 1)
-    query.perPage = Math.min(Math.max(toNumber(query.perPage, 10), 1), 100000)
+
 
     _.mapValues(query.where, (v, k) => {
       if (v === '' || v === null || _.isEqual(v, []) || _.isEqual(v, [null])) {
@@ -110,6 +101,19 @@ class Query {
         // index
         const defaultQuery = _.get(resourceConfig, `query.index`, {})
         query = _.defaultsDeep({}, query, defaultQuery)
+
+        let page = toNumber(request.input('page', 1))
+        if (!query.page) {
+          query.page = page
+        }
+
+        if (query.where && query.where.perPage) {
+          query.perPage = toNumber(query.where.perPage) || 10
+        }
+        delete query.where.perPage
+        
+        query.page = Math.max(toNumber(query.page, 1), 1)
+        query.perPage = Math.min(Math.max(toNumber(query.perPage, 10), 1), 100000)
       }
     }
     ctx.query = query
