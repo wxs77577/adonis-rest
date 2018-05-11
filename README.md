@@ -16,6 +16,7 @@
 
     # install adonis-rest
     adonis install adonis-rest --yarn
+    
     ```
 1. Edit `/start/app.js`
     
