@@ -26,8 +26,8 @@ module.exports = class ResourceController {
     const { Model, query, params, auth } = ctx
 
     await this.guard(auth.user, `${params.resource}.index`)
-    
-    if (auth.user.getPermissions().includes('groups.@')) {
+
+    if (auth.user.getPermissions && auth.user.getPermissions().includes('groups.@')) {
       const field = Config.get('rbac.restrict_field', 'user_ids')
       query.where[field] = String(auth.user._id)
     }
@@ -67,6 +67,17 @@ module.exports = class ResourceController {
     await this.guard(auth.user, `${params.resource}.export`)
     await Model.buildOptions()
     const fields = _.omitBy(Model.fields, (v, k) => v.listable === false || ['_actions'].includes(k))
+    const populate = []
+    _.mapValues(fields, v => {
+      if (v.ref) {
+        const [key] = v.ref.split('.')
+        populate.push(key)
+      }
+    })
+    if (!query.with) {
+      query.with = []
+    }
+    query.with = query.with.concat(populate)
     const { page, perPage = 20 } = query
     const offset = (page - 1) * perPage
     const limit = perPage
@@ -98,7 +109,7 @@ module.exports = class ResourceController {
       fs.mkdirSync(Helpers.tmpPath())
     } catch (e) { }
     fs.writeFileSync(path, buffer)
-    return response.attachment(path, `${Model.label}-${new Date().toLocaleString()}.xlsx`)
+    return response.attachment(path, `${Model.label || Model.name}-${new Date().toLocaleString()}.xlsx`)
   }
 
   async grid({ request, Model }) {
@@ -132,8 +143,8 @@ module.exports = class ResourceController {
     }
   }
   async view({ request, Model, model, auth, params }) {
-    await this.guard(auth.user, `${params.resource}.export`)
-    
+    await this.guard(auth.user, `${params.resource}.view`)
+
     await Model.buildOptions()
     return {
       labels: await Model.labels(),
@@ -144,7 +155,7 @@ module.exports = class ResourceController {
 
   async store({ request, auth, Model, model, params }) {
     await this.guard(auth.user, `${params.resource}.create`)
-    
+
     const fields = Model.fields
     const data = _.omitBy(request.all(), (v, k) => !auth.user.isRole(fields[k].role))
 
@@ -160,8 +171,8 @@ module.exports = class ResourceController {
   }
 
   async update({ request, auth, Model, model, params, validate }) {
-    await this.guard(auth.user, `${params.resource}.create`)
-    
+    await this.guard(auth.user, `${params.resource}.update`)
+
     let data = request.all()
     await model.validate(data)
     model.merge(data)
@@ -178,8 +189,8 @@ module.exports = class ResourceController {
   }
 
   async destroyAll({ request, auth, Model, validate, params }) {
-    await this.guard(auth.user, `${params.resource}.delete`)
-    
+    await this.guard(auth.user, `${params.resource}.delete_all`)
+
     await Model.query().delete()
     return {
       success: true
@@ -204,8 +215,8 @@ module.exports = class ResourceController {
   }
 
   async stat({ request, auth, Model, params }) {
-    await this.guard(auth.user, `${params.resource}.delete`)
-    
+    await this.guard(auth.user, `${params.resource}.stat`)
+
     const group = request.input('group', 'os')
     const data = _.mapValues(_.keyBy(await Model.count(group), '_id'), 'count')
 
