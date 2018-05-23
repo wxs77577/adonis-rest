@@ -81,7 +81,8 @@ module.exports = class ResourceController {
     const { page, perPage = 20 } = query
     const offset = (page - 1) * perPage
     const limit = perPage
-    const modelQuery = Model.query(query).select(Object.keys(fields)).skip(offset).limit(limit)
+    // const modelQuery = Model.query(query).select(Object.keys(fields)).skip(offset).limit(limit)
+    const modelQuery = Model.query(query).select(Object.keys(fields))
     if (query.withTrash) {
       modelQuery.ignoreScopes(['softDeletes'])._applyScopes()
     }

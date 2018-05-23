@@ -1,6 +1,6 @@
 {
   "name": "adonis-rest",
-  "version": "2.0.7",
+  "version": "2.0.8",
   "description": "An Restful api addon for AdonisJs 4 + MongoDB",
   "main": "index.js",
   "scripts": {

@@ -198,10 +198,9 @@ module.exports = class Model extends BaseModel {
       return ''
     }
     if (val.match(/^http/i)) {
-      return String(val).replace('worthdaily-app.oss-cn-hangzhou.aliyuncs.com', 'oss.worthdaily.com')
+      return val
     }
-    return String(use('Drive').getUrl(val)).replace('worthdaily-app.oss-cn-hangzhou.aliyuncs.com', 'oss.worthdaily.com')
-    // return Config.get('api.upload.url') + '/' + val
+    return use('Drive').getUrl(val)
   }
 
   static scopeListFields (query) {
