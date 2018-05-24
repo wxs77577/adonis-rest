@@ -42,7 +42,7 @@ class Query {
           end = begin + 1
         }
         const endDate = new Date(end)
-        end = endDate.setDate(endDate.getDate() + 1)
+        // end = endDate.setDate(endDate.getDate() + 1)
         query.where[k] = { $gte: begin, $lte: end }
         return
       }
