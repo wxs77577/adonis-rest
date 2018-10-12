@@ -76,12 +76,14 @@ class RestProvider extends ServiceProvider {
       }).prefix(prefix).middleware([
         `rest-auth:${config.auth || 'jwt'}`,
         `rest-query:${configKey}`,
-        `rest-resource`
+        `rest-resource`,
+        ...(config.middleware || [])
       ])
 
       Route.get(':resource/options', `${controller}.options`).middleware([
         `rest-auth:${config.auth || 'jwt'}`,
-        'rest-resource:,allowAll'
+        'rest-resource:,allowAll',
+        ...(config.middleware || [])
       ]).as(`${configKey}.resource.options`)
     }
   }

@@ -47,6 +47,9 @@ class Resource {
         throw new HttpException(`Bad Resource ${className}`, 404)
       }
       const Model = ctx.Model
+      if (Model.buildOptions) {
+        await Model.buildOptions()
+      }
 
       ctx.model = new Model()
 
