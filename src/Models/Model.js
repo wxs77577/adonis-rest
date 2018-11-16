@@ -65,9 +65,9 @@ module.exports = class Model extends BaseModel {
   //   return this._id
   // }
 
-  static async fetchOptions (lhs, rhs, where = {}, limit = 0) {
+  static async fetchOptions (lhs, rhs, where = {}, limit = 0, sort = '-_id') {
     const textFields = rhs.split(' ')
-    let data = await this.select([lhs].concat(textFields)).where(where).limit(limit).fetch()
+    let data = await this.select([lhs].concat(textFields)).where(where).limit(limit).sort(sort).fetch()
     data = _.map(data.toJSON(), v => {
       const text = []
       textFields.forEach(field => text.push(v[field]))
