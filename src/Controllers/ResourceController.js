@@ -211,7 +211,7 @@ module.exports = class ResourceController {
       }
       where['$or'] = orWhere
     }
-    const ret = await Model.fetchOptions(value, text, where, limit)
+    const ret = await Model.fetchOptions(value, text, where, parseInt(limit))
     return ret
   }
 
